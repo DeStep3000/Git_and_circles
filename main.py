@@ -10,10 +10,11 @@ class Circle:
         self.x = x
         self.y = y
         self.d = d
+        self.colors = randint(0, 255), randint(0, 255), randint(0, 255)
 
     def draw(self, painter):
-        painter.setBrush(QColor(255, 238, 0))
-        painter.setPen(QColor(255, 238, 0))
+        painter.setBrush(QColor(self.colors[0], self.colors[1], self.colors[-1]))
+        painter.setPen(QColor(self.colors[0], self.colors[1], self.colors[-1]))
         painter.drawEllipse(self.x, self.y, self.d, self.d)
 
 
@@ -22,7 +23,7 @@ class Window(QMainWindow):
         super(Window, self).__init__()
         self.objects = []
         button = QPushButton(self)
-        button.move(250, 20)
+        button.move(300, 20)
         button.setText('Нажми меня')
         button.clicked.connect(self.run)
         self.loadui()
